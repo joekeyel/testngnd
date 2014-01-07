@@ -10,7 +10,7 @@ list($version,$status,$msg) = explode(' ',$http_response_header[0], 3);
 if ($status != 200)
 echo "Your call to the web service returned an error status of $status.";
 else
-echo $firstrow[0];
+echo $result;
 
 
 
