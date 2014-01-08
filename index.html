@@ -86,6 +86,9 @@ navigator.geolocation.getCurrentPosition (function (pos)
 });
 
 $(function(){
+	
+	$.mobile.allowCrossDomainPages = true;
+	
 	$("#call").click(function() {
 	
 		$.ajax({
