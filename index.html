@@ -108,7 +108,7 @@ $(document.ready(function(){
 	
 	$("#show-migration").click(function() {
 	
-		 $.getJSON("http://http://58.27.84.166/mcconline/migrate/json_migration_pending.php", function(data){
+		 $.getJSON("http://58.27.84.166/mcconline/migrate/json_migration_pending.php", function(data){
             var output = '';
             $.each(data, function(index, value){                   
              output += '<li><a href="#" id="' + index + '">' +value.site_name+ '</a></li>';
