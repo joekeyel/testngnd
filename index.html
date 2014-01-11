@@ -104,11 +104,11 @@ navigator.geolocation.getCurrentPosition (function (pos)
 
 $(document.ready(function(){
 	
-	$.mobile.allowCrossDomainPages = true;
+	
 	
 	$("#show-migration").click(function() {
 	
-		 $.getJSON("http://58.27.84.166/mcconline/migrate/json_migration_pending.php", function(data){
+		 $.getJSON("http://58.27.84.166/mcconline/migrate/json_migration_pending.php?jsoncallback=?", function(data){
             var output = '';
             $.each(data, function(index, value){                   
              output += '<li><a href="#" id="' + index + '">' +value.site_name+ '</a></li>';
