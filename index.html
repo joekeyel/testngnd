@@ -9,63 +9,80 @@
 </head> 
 <body> 
 
-<div data-role="page" id="page">
+<div data-role="page" id="page" >
 	<div data-role="header">
-		<h1>Page One</h1>
+		<h1>NGN Migration Plan</h1>
 	</div>
 	<div data-role="content">	
 		<ul data-role="listview">
-			<li><a href="#page2">Page Two</a></li>
-            <li><a href="#page3" id="call1">Page Three</a></li>
-			<li><a href="#page4">Page Four</a></li>
-		</ul>		
+			<li><a href="#page2" id="show-migration">Schedule Migration Pending</a></li>
+            <li><a href="#page3" id="show-jumpering">Schedule Jumpering Pending</a></li>
+			<li><a href="#page4">Schedule Softfreeze</a></li>
+            <li><a href="#page5">Schedule Hardfreeze</a></li>
+		</ul>	
+       <div data-role="fieldcontain" >
+       <span id="lat"></span>
+       <span id="lng"></span>
+       
+       testing
+       </div>
 	</div>
-	<div data-role="footer">
-		<h4>Page Footer</h4>
-	</div>
+
 </div>
 
 <div data-role="page" id="page2">
 	<div data-role="header">
-		<h1>Page Two</h1>
+		<h1>Migration Pending</h1>
 	</div>
-	<div data-role="content">	
-		Content		
-        <select name="exchange">
-        <option>LHD_NGN</option>
-        
-        
-        </select>
-	</div>
-	<div data-role="footer">
-		<h4>Page Footer</h4>
-	</div>
+	<ul data-role="listview" id="listsite1" data-inset="true">
+    
+	</ul>	
+	
+
 </div>
 
 <div data-role="page" id="page3">
 	<div data-role="header">
-		<h1>Page Three</h1>
+		<h1>Jumpering Pending</h1>
 	</div>
-	<div data-role="content">	
-		<div id="selexchange"><input name="call" type="button" value="call" id="call"></div>	
+	<div data-role="content" >	
+    <div id="content-jumpering">
+		<table width="100%" border="0">
+  <tr>
+    <td>Site Name</td>
+     <td>Site Abbr</td>
+    <td>Migration Date</td>
+  </tr>
+  <tr>
+    <td>&nbsp;</td>
+    <td>&nbsp;</td>
+     <td>&nbsp;</td>
+  </tr>
+</table></div>
+ <input type="button" data-role="button" id="query" value="query">
 	</div>
-	<div data-role="footer">
-		<h4>Page Footer</h4>
-	</div>
+	
 </div>
 
 <div data-role="page" id="page4">
 	<div data-role="header">
-		<h1>Page Four</h1>
+		<h1>Softfreeze</h1>
 	</div>
 	<div data-role="content">	
 		Content		
 	</div>
-	<div data-role="footer">
-		<h4>Page Footer</h4>
-	</div>
+	
 </div>
 
+<div data-role="page" id="page5">
+	<div data-role="header">
+		<h1>Schedule Hardfreeze</h1>
+	</div>
+	<div data-role="content">	
+		Content		
+	</div>
+	
+</div>
 </body>
 </html>
  <script>
@@ -86,24 +103,19 @@ navigator.geolocation.getCurrentPosition (function (pos)
 });
 
 $(function(){
-	
 	$.mobile.allowCrossDomainPages = true;
 	
-	$("#call1").click(function() {
+	$("#show-migration").click(function() {
 	
-		$.ajax({
-          type: "GET",
-          url: "http://58.27.84.166/mcconline/migrate/main_index.php",
-          cache: false,
-          success: function(html){
-	
-            $("#selexchange").empty();
-            $("#selexchange").prepend(html);
-            
+		 $.getJSON("http://http://58.27.84.166/mcconline/migrate/json_migration_pending.php", function(data){
+            var output = '';
+            $.each(data, function(index, value){                   
+             output += '<li><a href="#" id="' + index + '">' +value.site_name+ '</a></li>';
+            });
+            $('#listsite1').append(output);
+        });
 
-                 }
-
-         });
+         
 	
 	});
 	
