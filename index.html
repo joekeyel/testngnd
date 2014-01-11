@@ -102,7 +102,8 @@ navigator.geolocation.getCurrentPosition (function (pos)
 
 });
 
-$(function(){
+$(document.ready(function(){
+	
 	$.mobile.allowCrossDomainPages = true;
 	
 	$("#show-migration").click(function() {
@@ -112,7 +113,7 @@ $(function(){
             $.each(data, function(index, value){                   
              output += '<li><a href="#" id="' + index + '">' +value.site_name+ '</a></li>';
             });
-            $('#listsite1').append(output);
+            $('#listsite1').html(output);
         });
 
          
