@@ -16,7 +16,7 @@
 	<div data-role="content">	
 		<ul data-role="listview">
 			<li><a href="#page2">Page Two</a></li>
-            <li><a href="#page3">Page Three</a></li>
+            <li><a href="#page3" id="call1">Page Three</a></li>
 			<li><a href="#page4">Page Four</a></li>
 		</ul>		
 	</div>
@@ -89,7 +89,7 @@ $(function(){
 	
 	$.mobile.allowCrossDomainPages = true;
 	
-	$("#call").click(function() {
+	$("#call1").click(function() {
 	
 		$.ajax({
           type: "GET",
